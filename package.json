@@ -1,0 +1,27 @@
+{
+  "name": "study-zone",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^1",
+    "pinia": "^2.2.2",
+    "pinia-plugin-persistedstate": "^4.0.0",
+    "vue": "^3.3.4",
+    "vuetify": "^3.7.1"
+  },
+  "devDependencies": {
+    "@mdi/font": "^7.4.47",
+    "@tauri-apps/cli": "^1",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.1",
+    "vue-tsc": "^2.0.22"
+  }
+}
