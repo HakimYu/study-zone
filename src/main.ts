@@ -46,5 +46,15 @@ const vuetify = createVuetify({
         }
     },
 })
-
-createApp(App).use(vuetify).use(pinia).mount("#app");
+// createWebHistory()
+import { createRouter, createWebHashHistory } from 'vue-router'
+import main from './Main.vue'
+import login from './Login.vue'
+const router = createRouter({
+    history: createWebHashHistory(),
+    routes: [
+        { path: '/', component: main },
+        { path: '/login', component: login },
+    ],
+})
+createApp(App).use(vuetify).use(pinia).use(router).mount("#app");

@@ -20,6 +20,9 @@ importers:
       vue:
         specifier: ^3.3.4
         version: 3.5.1(typescript@5.5.4)
+      vue-router:
+        specifier: '4'
+        version: 4.4.3(vue@3.5.1(typescript@5.5.4))
       vuetify:
         specifier: ^3.7.1
         version: 3.7.1(typescript@5.5.4)(vue@3.5.1(typescript@5.5.4))
@@ -1115,6 +1118,11 @@ packages:
       '@vue/composition-api':
         optional: true
 
+  vue-router@4.4.3:
+    resolution: {integrity: sha512-sv6wmNKx2j3aqJQDMxLFzs/u/mjA9Z5LCgy6BE0f7yFWMjrPLnS/sPNn8ARY/FXw6byV18EFutn5lTO6+UsV5A==}
+    peerDependencies:
+      vue: ^3.2.0
+
   vue-tsc@2.1.6:
     resolution: {integrity: sha512-f98dyZp5FOukcYmbFpuSCJ4Z0vHSOSmxGttZJCsFeX0M4w/Rsq0s4uKXjcSRsZqsRgQa6z7SfuO+y0HVICE57Q==}
     hasBin: true
@@ -2167,6 +2175,11 @@ snapshots:
 
   vue-demi@0.14.10(vue@3.5.1(typescript@5.5.4)):
     dependencies:
+      vue: 3.5.1(typescript@5.5.4)
+
+  vue-router@4.4.3(vue@3.5.1(typescript@5.5.4)):
+    dependencies:
+      '@vue/devtools-api': 6.6.3
       vue: 3.5.1(typescript@5.5.4)
 
   vue-tsc@2.1.6(typescript@5.5.4):
