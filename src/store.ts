@@ -1,4 +1,4 @@
-import { createPinia,defineStore } from 'pinia'
+import {createPinia, defineStore} from 'pinia'
 import {ref} from "vue";
 import persisitedstate from "pinia-plugin-persistedstate";
 
@@ -20,6 +20,9 @@ export const storeF = defineStore('store', () => {
 
     return {
         color
+    }},
+    {
+        persist: true,
     }
-})
-export default pinia
+)
+    export default pinia

@@ -9,9 +9,8 @@ import * as directives from 'vuetify/directives'
 import '@mdi/font/css/materialdesignicons.css'
 
 //pinia
-import { createPinia } from 'pinia'
 import {storeF} from './store'
-const pinia = createPinia()
+import pinia from "./pinia";
 const app = createApp({})
 app.use(pinia);
 const settings = storeF(pinia);

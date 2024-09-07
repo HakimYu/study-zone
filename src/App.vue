@@ -135,6 +135,24 @@
           </v-card>
         </template>
       </v-dialog>
+      <v-dialog
+          v-model="colorPickerDialog"
+          width="auto"
+      >
+        <v-card>
+          <v-row>
+            <v-col>
+              <v-color-picker
+                  class="ma-2"
+                  v-model="selectedColor"
+                  swatches-max-height="400px"
+                  show-swatches
+              ></v-color-picker>
+            </v-col>
+          </v-row>
+        </v-card>
+        <v-btn color="secondary" @click="confirmColor">确定</v-btn>
+      </v-dialog>
       <v-btn class="mr-4" icon>
         <v-avatar
             image="avatar.png"
@@ -435,9 +453,46 @@ async function load({done}: { done: loadDoneCallback }) {
     done('ok')
   }, 2000)
 }
+const selectedColor = ref('')
+function confirmColor() {
+  if (changingColorMode.value === 'light') {
+    switch (changingColor.value) {
+      case 'primary':
+        store.color.light.primary = selectedColor.value;
+        break;
+      case'secondary':
+
+        store.color.light.secondary = selectedColor.value;
+        break;
+      case 'background':
+        store.color.light.background = selectedColor.value;
+        break;
+      default:
+        break;
+    }
+  } else if (changingColorMode.value === 'dark') {
+    switch (changingColor.value) {
+      case 'primary':
+        store.color.dark.primary = selectedColor.value;
+        break;
+      case'secondary':
+        store.color.dark.secondary = selectedColor.value;
+        break;
+      case 'background':
+        store.color.dark.background = selectedColor.value;
+        break;
+      default:
+        break;
+    }
+  }
+  theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+  theme.global.name.value = theme.global.current.value.dark ? 'dark' : 'light'
+  colorPickerDialog.value = false;
+}
 
 //组件挂载完成
 onMounted(() => {
+  console.log(store.color.light.primary)
   if (mobile.value) {
     drawer.value = false
   }
