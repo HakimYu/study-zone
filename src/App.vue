@@ -149,7 +149,7 @@
               </template>
               <v-list-item-title>个人中心</v-list-item-title>
             </v-list-item>
-            <v-list-item>
+            <v-list-item @click="showSnackbar('已退出登录')">
               <template v-slot:prepend>
                 <v-icon icon="mdi-logout"></v-icon>
               </template>
@@ -404,19 +404,27 @@ const snackbarText = ref('')
 interface loadDoneCallback {
   (status?: string): void;
 }
+//持久化储存
 const store = storeF()
 const changingColor = ref('');
 const changingColorMode = ref('');
 const colorPickerDialog = ref(false);
-
+//vuetify主题
 const theme = useTheme()
+//改变主题颜色
 function changeColor(mode: string, name: string) {
   changingColor.value = name;
   changingColorMode.value = mode;
   colorPickerDialog.value = true;
 }
+//刷新页面
 function refreshPage() {
   window.location.reload();
+}
+//消息条
+function showSnackbar(message: string) {
+  snackbarText.value = message;
+  snackbar.value = true;
 }
 //无限滚动加载项目
 async function load({done}: { done: loadDoneCallback }) {
