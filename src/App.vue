@@ -137,7 +137,7 @@
       </v-dialog>
       <v-btn class="mr-4" icon>
         <v-avatar
-            image="https://s2.loli.net/2024/09/05/CaIbcNHPQwDhTKt.png"
+            image="avatar.png"
             color="surface-variant"
             variant="flat"
         ></v-avatar>
