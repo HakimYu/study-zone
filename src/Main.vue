@@ -194,51 +194,7 @@
         ></v-text-field>
         <div v-for="(value,index) in toDoList">
           <v-divider class="my-6"></v-divider>
-          <v-card :prepend-avatar="'./1-'+(index+1)+'.jpg'">
-            <v-card-title>{{ value.name }}</v-card-title>
-            <v-card-text>{{ value.brief }}</v-card-text>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn icon="mdi-arrow-right"></v-btn>
-            </v-card-actions>
-            <!--点击窗口-->
-            <v-dialog activator="parent" max-width="80%">
-              <template v-slot:default="{ isActive }">
-                <v-card
-                    title="课程名称"
-                >
-                  <v-container>
-                    <v-row>
-                      <v-col class="d-flex justify-center" cols="12" md="6">
-                        <v-card width="300">
-                          <v-img :src="'./1-'+(index+1)+'.jpg'"></v-img>
-                        </v-card>
-                      </v-col
-                      >
-                      <v-col class="d-flex justify-center" cols="12" md="6">
-                        <div class="text-body-1 pr-10">[课程名称] 课程深入探讨 [课程主题相关内容]。分析
-                          [课程主题对特定领域的影响]，引导学生思考 [与课程主题相关的思考点]。
-                        </div>
-                      </v-col>
-                    </v-row>
-                  </v-container>
-                  <template v-slot:actions>
-                    <v-spacer></v-spacer>
-                    <v-btn
-                        class="ml-auto"
-                        text="关闭"
-                        @click="isActive.value = false"
-                    ></v-btn>
-                    <v-btn
-                        class="ml-auto"
-                        text="学习"
-                        @click="isActive.value = false"
-                    ></v-btn>
-                  </template>
-                </v-card>
-              </template>
-            </v-dialog>
-          </v-card>
+          <to-card :toValue="value" :avatar="'./1-'+(index+1)+'.jpg'"></to-card>
         </div>
       </div>
     </v-navigation-drawer>
@@ -249,64 +205,7 @@
           bg-color="background"
       >
 
-        <v-slide-group show-arrows>
-          <v-slide-group-item
-              v-for="n in slideGroup"
-              :key="n"
-          >
-            <v-hover
-                v-slot="{ isHovering, props }"
-            >
-              <v-card
-                  :class="{ 'on-hover': isHovering }"
-                  :elevation="isHovering ? 16 : 2"
-                  class="ma-3"
-                  bg-color="background"
-                  width="250"
-                  rounded
-                  v-bind="props"
-              >
-                <v-img :src="n"></v-img>
-                <v-dialog activator="parent" max-width="80%">
-                  <template v-slot:default="{ isActive }">
-                    <v-card
-                        title="课程名称"
-                    >
-                      <v-container>
-                        <v-row>
-                          <v-col class="d-flex justify-center" cols="12" md="6">
-                            <v-card class="d-flex justify-center" width="300">
-                              <v-img :src="n"></v-img>
-                            </v-card>
-                          </v-col
-                          >
-                          <v-col class="d-flex justify-center" cols="12" md="6">
-                            <div class="text-body-1 pr-10">[课程名称] 课程深入探讨 [课程主题相关内容]。分析
-                              [课程主题对特定领域的影响]，引导学生思考 [与课程主题相关的思考点]。
-                            </div>
-                          </v-col>
-                        </v-row>
-                      </v-container>
-                      <template v-slot:actions>
-                        <v-spacer></v-spacer>
-                        <v-btn
-                            class="ml-auto"
-                            text="关闭"
-                            @click="isActive.value = false"
-                        ></v-btn>
-                        <v-btn
-                            class="ml-auto"
-                            text="学习"
-                            @click="isActive.value = false"
-                        ></v-btn>
-                      </template>
-                    </v-card>
-                  </template>
-                </v-dialog>
-              </v-card>
-            </v-hover>
-          </v-slide-group-item>
-        </v-slide-group>
+        <slide-group></slide-group>
       </v-sheet>
 
       <v-sheet
@@ -324,49 +223,7 @@
                   cols="6"
                   md="2"
               >
-                <v-hover v-slot="{ isHovering, props }">
-                  <v-card v-bind="props"
-                          :class="{ 'on-hover': isHovering }"
-                          :elevation="isHovering ? 16 : 2">
-                    <v-img :src="item"></v-img>
-                    <v-dialog activator="parent" max-width="80%">
-                      <template v-slot:default="{ isActive }">
-                        <v-card
-                            title="课程名称"
-                        >
-                          <v-container>
-                            <v-row>
-                              <v-col class="d-flex justify-center" cols="12" md="6">
-                                <v-card class="d-flex justify-center" width="300">
-                                  <v-img :src="item"></v-img>
-                                </v-card>
-                              </v-col
-                              >
-                              <v-col class="d-flex justify-center" cols="12" md="6">
-                                <div class="text-body-1 pr-10">[课程名称] 课程深入探讨 [课程主题相关内容]。分析
-                                  [课程主题对特定领域的影响]，引导学生思考 [与课程主题相关的思考点]。
-                                </div>
-                              </v-col>
-                            </v-row>
-                          </v-container>
-                          <template v-slot:actions>
-                            <v-spacer></v-spacer>
-                            <v-btn
-                                class="ml-auto"
-                                text="关闭"
-                                @click="isActive.value = false"
-                            ></v-btn>
-                            <v-btn
-                                class="ml-auto"
-                                text="学习"
-                                @click="isActive.value = false"
-                            ></v-btn>
-                          </template>
-                        </v-card>
-                      </template>
-                    </v-dialog>
-                  </v-card>
-                </v-hover>
+                <list-card :pic="item"></list-card>
               </v-col>
             </v-row>
           </v-infinite-scroll>
@@ -382,14 +239,22 @@ import {useDisplay} from 'vuetify'
 import {storeF} from './store'
 import {useTheme} from "vuetify";
 import {useRouter} from "vue-router";
+import ToCard from "./components/ToCard.vue";
+import SlideGroup from "./components/SlideGroup.vue";
+import ListCard from "./components/ListCard.vue";
 //路由
 const router = useRouter()
 //判断是否为手机
 const {mobile} = useDisplay()
 //抽屉
-const drawer = ref(true)
+const drawer = ref<boolean>(true)
 //待办事项列表
-const toDoList = ref([
+interface ToDoList {
+  name: string;
+  brief: string;
+  img: string;
+}
+const toDoList = ref<ToDoList[]>([
   {
     "name": "人工智能与未来社会",
     "brief": "本课程探讨人工智能的发展历程、技术原理及在各个领域的应用。分析人工智能对未来社会的经济、文化、教育、医疗等方面带来的变革与挑战，引导学生思考人类在人工智能时代的角色定位和发展方向。",
@@ -411,20 +276,20 @@ const toDoList = ref([
     "img": "1-4.jpg"
   }]
 )
-//轮播图列表
-const slideGroup = ref(['2-1.jpg', '2-2.jpg', '2-3.jpg', '2-4.jpg', '2-5.jpg'])
 //瀑布流别表
-const items = ref([
+const items = ref<string[]>([
   '3-1.jpg', '3-2.jpg', '3-3.jpg', '3-5.jpg', '3-6.jpg', '3-7.jpg', '3-8.jpg', '3-9.jpg', '3-10.jpg'
 ])
 //消息条
 const snackbar = ref(false)
 //消息条文本
 const snackbarText = ref('')
+
 //定义done函数类型
 interface loadDoneCallback {
   (status?: string): void;
 }
+
 //持久化储存
 const store = storeF()
 const changingColor = ref('');
@@ -432,21 +297,25 @@ const changingColorMode = ref('');
 const colorPickerDialog = ref(false);
 //vuetify主题
 const theme = useTheme()
+
 //改变主题颜色
 function changeColor(mode: string, name: string) {
   changingColor.value = name;
   changingColorMode.value = mode;
   colorPickerDialog.value = true;
 }
+
 //刷新页面
 function refreshPage() {
   window.location.reload();
 }
+
 //消息条
 function showSnackbar(message: string) {
   snackbarText.value = message;
   snackbar.value = true;
 }
+
 //无限滚动加载项目
 async function load({done}: { done: loadDoneCallback }) {
   setTimeout(() => {
@@ -456,7 +325,9 @@ async function load({done}: { done: loadDoneCallback }) {
     done('ok')
   }, 2000)
 }
+
 const selectedColor = ref('')
+
 function confirmColor() {
   if (changingColorMode.value === 'light') {
     switch (changingColor.value) {
